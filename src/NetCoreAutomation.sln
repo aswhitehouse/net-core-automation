@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreAutomationUiCommon",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\..\build\_build.csproj", "{18DFC602-0FB9-4A14-9ED6-CC22764C468C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreAutomationUiCommonTests", "NetCoreAutomationUiCommonTests\NetCoreAutomationUiCommonTests.csproj", "{6FD01A06-D329-47BA-8619-9391D8EAE8FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,5 +18,9 @@ Global
 		{2D42F2EF-B82C-4853-B14E-34C7596E0F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D42F2EF-B82C-4853-B14E-34C7596E0F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D42F2EF-B82C-4853-B14E-34C7596E0F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD01A06-D329-47BA-8619-9391D8EAE8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD01A06-D329-47BA-8619-9391D8EAE8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD01A06-D329-47BA-8619-9391D8EAE8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD01A06-D329-47BA-8619-9391D8EAE8FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
