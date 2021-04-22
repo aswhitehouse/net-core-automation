@@ -1,9 +1,8 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NetCoreAutomationUiCommon.core;
+using NUnit.Framework;
 
 namespace NetCoreAutomationUiCommonTests.common.tests
 {
-    [TestClass]
     public class BrowserControllerSelectionTests
     {
         private readonly BrowserController _browserController;
@@ -13,12 +12,12 @@ namespace NetCoreAutomationUiCommonTests.common.tests
             _browserController = new BrowserController();
         }
 
-        [TestMethod]
+        [Test]
         public void SelectAChromeBrowserInstance_ChromeStrategyIsCalled()
         {
             _browserController.SetBrowser(new ChromeBrowserController());
             var chromeBrowserController = _browserController.CreateBrowserController();
-            Assert.IsInstanceOfType(chromeBrowserController, typeof(ChromeDriver));
+            Assert.IsInstanceOf<ChromeDriver>(chromeBrowserController);
         }
     }
 }
