@@ -1,0 +1,110 @@
+{
+  "uid" : "7294a62511af649e",
+  "name" : "InitialiseTheBrowserControllerWithAChromeBrowserObject",
+  "fullName" : "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature.InitialiseTheBrowserControllerWithAChromeBrowserObject",
+  "historyId" : "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature.InitialiseTheBrowserControllerWithAChromeBrowserObject",
+  "time" : {
+    "start" : 1619082931803,
+    "stop" : 1619082931850,
+    "duration" : 47
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "steps" : [ {
+      "name" : "Given a Browser Controller object",
+      "time" : { },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "-> done: BrowserControlSteps.GivenABrowserControllerObject() (0.0s)",
+      "time" : { },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When I call Set Browser with an Instance of ChromeBrowserController",
+      "time" : { },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "-> done: BrowserControlSteps.WhenICallSetBrowserWithAnInstanceOfChromeBrowserController() (0.0s)",
+      "time" : { },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then the underlying browser object type is Chrome",
+      "time" : { },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "-> done: BrowserControlSteps.ThenTheUnderlyingBrowserObjectTypeIsChrome() (0.0s)",
+      "time" : { },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 6,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature"
+  }, {
+    "name" : "testClass",
+    "value" : "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature"
+  }, {
+    "name" : "package",
+    "value" : "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature"
+  }, {
+    "name" : "resultFormat",
+    "value" : "trx"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "7294a62511af649e.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,15 @@
+{
+  "total" : 1,
+  "items" : [ {
+    "uid" : "c76780e94b9d27cfe97133da7bd5c2cc",
+    "name" : "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  } ]
+}

@@ -1,0 +1,21 @@
+{
+  "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature.InitialiseTheBrowserControllerWithAChromeBrowserObject" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "7294a62511af649e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1619082931803,
+        "stop" : 1619082931850,
+        "duration" : 47
+      }
+    } ]
+  }
+}
