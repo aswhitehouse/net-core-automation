@@ -16,7 +16,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: ./build.sh test --logger "trx;logfilename=TestResults.trx" --results-directory ./TestResults
       - name: Navigate to Allure Cli Shell
-      - run: cd /resources/allure-commandline/bin
+        run: cd /resources/allure-commandline/bin
       - name: List files
-      - run: ls
+        run: ls
       - run: echo "🍏 This job's status is ${{ job.status }}."
