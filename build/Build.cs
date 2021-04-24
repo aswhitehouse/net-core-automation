@@ -5,6 +5,7 @@ using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
+using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
@@ -13,7 +14,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 [GitHubActions("Net-Core-Automation-CI", GitHubActionsImage.UbuntuLatest, OnPushBranches = new[] {"'**'"},
-    InvokedTargets = new[] {nameof(Test)})]
+    InvokedTargets = new[] {nameof(PublishTestResults)})]
 class Build : NukeBuild
 {
     /// Support plugins are available for:
@@ -28,10 +29,12 @@ class Build : NukeBuild
 
     [Solution] readonly Solution Solution;
     [GitRepository] readonly GitRepository GitRepository;
+    [PathExecutable] readonly Tool Bash;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ResultsDirectory => SourceDirectory / "TestResults";
     static string ReportOutput => "trx;logfilename=TestResults.trx";
+    AbsolutePath AllureCliDirectory => RootDirectory / "resources" / "allure-commandline" / "bin";
 
     Target Clean => _ => _
         .Before(Restore)
@@ -68,5 +71,12 @@ class Build : NukeBuild
                 .SetResultsDirectory(ResultsDirectory)
                 .SetConfiguration(Configuration)
                 .EnableNoRestore());
+        });
+
+    Target PublishTestResults => _ => _
+        .DependsOn(Test)
+        .Executes(() =>
+        {
+            Bash($"./Allure generate {ResultsDirectory} --clean", AllureCliDirectory);
         });
 }
