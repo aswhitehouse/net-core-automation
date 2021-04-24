@@ -2,11 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreAutomationUiCommon", "NetCoreAutomationUiCommon\NetCoreAutomationUiCommon.csproj", "{2D42F2EF-B82C-4853-B14E-34C7596E0F0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\..\build\_build.csproj", "{18DFC602-0FB9-4A14-9ED6-CC22764C468C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreAutomationUiCommonTests", "NetCoreAutomationUiCommonTests\NetCoreAutomationUiCommonTests.csproj", "{6FD01A06-D329-47BA-8619-9391D8EAE8FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreAutomationUiCommonSpecs", "NetCoreAutomationUiCommonSpecs\NetCoreAutomationUiCommonSpecs.csproj", "{82B12C11-9C7D-4F1C-A597-9ECA13811C5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{ACE0B034-7F55-4F8A-B112-1B3D1BF79EFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,8 +14,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18DFC602-0FB9-4A14-9ED6-CC22764C468C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18DFC602-0FB9-4A14-9ED6-CC22764C468C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE0B034-7F55-4F8A-B112-1B3D1BF79EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE0B034-7F55-4F8A-B112-1B3D1BF79EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D42F2EF-B82C-4853-B14E-34C7596E0F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D42F2EF-B82C-4853-B14E-34C7596E0F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D42F2EF-B82C-4853-B14E-34C7596E0F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
