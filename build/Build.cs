@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.CI.GitHubActions;
@@ -6,6 +7,7 @@ using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
+using Nuke.Common.Tools.Coverlet;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
@@ -14,7 +16,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 [GitHubActions("Net-Core-Automation-CI", GitHubActionsImage.UbuntuLatest, OnPushBranches = new[] {"'**'"},
-    InvokedTargets = new[] {nameof(PublishTestResults)})]
+    InvokedTargets = new[] {nameof(Pack)})]
 class Build : NukeBuild
 {
     /// Support plugins are available for:
@@ -29,12 +31,12 @@ class Build : NukeBuild
 
     [Solution] readonly Solution Solution;
     [GitRepository] readonly GitRepository GitRepository;
-    [PathExecutable] readonly Tool Bash;
+    [PathExecutable] readonly Tool sh;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ResultsDirectory => SourceDirectory / "TestResults";
-    static string ReportOutput => "trx;logfilename=TestResults.trx";
     AbsolutePath AllureCliDirectory => RootDirectory / "resources" / "allure-commandline" / "bin";
+    AbsolutePath OutputDirectory => SourceDirectory / "Output";
 
     Target Clean => _ => _
         .Before(Restore)
@@ -66,17 +68,26 @@ class Build : NukeBuild
         .Executes(() =>
         {
             DotNetTest(s => s
-                .SetProjectFile(Solution)
-                .SetLogger(ReportOutput)
+                .EnableNoBuild()
                 .SetResultsDirectory(ResultsDirectory)
+                .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
-                .EnableNoRestore());
+                    .SetLogger($"trx;LogFileName={Solution.Name}.trx"));
         });
 
     Target PublishTestResults => _ => _
         .DependsOn(Test)
         .Executes(() =>
         {
-            Bash($"./Allure generate {ResultsDirectory} --clean", AllureCliDirectory);
+            sh($"./Allure generate {ResultsDirectory} --clean", AllureCliDirectory);
+        });
+
+    Target Pack => _ => _
+        .DependsOn(PublishTestResults)
+        .Executes(() =>
+        {
+            DotNetPack(_ => _
+                .SetProject(Solution.GetProject("NetCoreAutomationUiCommon"))
+                .SetOutputDirectory(OutputDirectory));
         });
 }
