@@ -79,7 +79,7 @@ class Build : NukeBuild
         .DependsOn(Test)
         .Executes(() =>
         {
-            sh($"./Allure generate {ResultsDirectory} --clean", AllureCliDirectory);
+            sh($"./allure generate {ResultsDirectory} --clean", AllureCliDirectory);
         });
 
     Target Pack => _ => _
