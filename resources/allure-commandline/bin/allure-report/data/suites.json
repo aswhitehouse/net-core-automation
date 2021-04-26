@@ -1,0 +1,22 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "NetCoreAutomationUiCommonSpecs.Features.BrowserInstanceTypeControlFeature",
+    "children" : [ {
+      "name" : "InitialiseTheBrowserControllerWithAChromeBrowserObject",
+      "uid" : "7294a62511af649e",
+      "parentUid" : "c76780e94b9d27cfe97133da7bd5c2cc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1619082931803,
+        "stop" : 1619082931850,
+        "duration" : 47
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "c76780e94b9d27cfe97133da7bd5c2cc"
+  } ]
+}

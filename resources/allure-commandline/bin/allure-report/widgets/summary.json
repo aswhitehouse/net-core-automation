@@ -1,0 +1,20 @@
+{
+  "reportName" : "Andrew Whitehouse",
+  "testRuns" : [ ],
+  "statistic" : {
+    "failed" : 0,
+    "broken" : 0,
+    "skipped" : 0,
+    "passed" : 1,
+    "unknown" : 0,
+    "total" : 1
+  },
+  "time" : {
+    "start" : 1619082931803,
+    "stop" : 1619082931850,
+    "duration" : 47,
+    "minDuration" : 47,
+    "maxDuration" : 47,
+    "sumDuration" : 47
+  }
+}

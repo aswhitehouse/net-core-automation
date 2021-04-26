@@ -1,0 +1,11 @@
+[ {
+  "uid" : "7294a62511af649e",
+  "name" : "InitialiseTheBrowserControllerWithAChromeBrowserObject",
+  "time" : {
+    "start" : 1619082931803,
+    "stop" : 1619082931850,
+    "duration" : 47
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

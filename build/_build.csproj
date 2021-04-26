@@ -6,11 +6,11 @@
     <RootNamespace></RootNamespace>
     <NoWarn>CS0649;CS0169</NoWarn>
     <NukeRootDirectory>..</NukeRootDirectory>
-    <NukeScriptDirectory>..</NukeScriptDirectory>
+    <NukeScriptDirectory>..\src</NukeScriptDirectory>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nuke.Common" Version="5.1.0" />
+    <PackageReference Include="Nuke.Common" Version="5.1.1" />
   </ItemGroup>
 
 </Project>
