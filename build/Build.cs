@@ -31,7 +31,7 @@ class Build : NukeBuild
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
     [Solution] readonly Solution Solution;
-    [PathExecutable] readonly Tool Sh;
+    [PathExecutable] readonly Tool sh;
 
     private static AbsolutePath SourceDirectory => RootDirectory / "src";
 
@@ -84,7 +84,7 @@ class Build : NukeBuild
         .DependsOn(Test)
         .Executes(() =>
         {
-            Sh($"./allure generate {ResultsDirectory} --clean", AllureCliDirectory);
+            sh($"./allure generate {ResultsDirectory} --clean", AllureCliDirectory);
         });
 
     [GitVersion(Framework = "netcoreapp3.1")] readonly GitVersion GitVersion;
