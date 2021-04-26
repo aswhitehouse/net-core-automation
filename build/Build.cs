@@ -87,16 +87,13 @@ class Build : NukeBuild
             sh($"./allure generate {ResultsDirectory} --clean", AllureCliDirectory);
         });
 
-    [GitVersion(Framework = "netcoreapp3.1")] readonly GitVersion GitVersion;
-
     Target Pack => _ => _
         .DependsOn(PublishTestResults)
         .Executes(() =>
         {
             DotNetPack(_ => _
                 .SetProject(Solution.GetProject("NetCoreAutomationUiCommon"))
-                .SetOutputDirectory(OutputDirectory)
-                .SetVersion(GitVersion.NuGetVersionV2));
+                .SetOutputDirectory(OutputDirectory));
         });
 
     IEnumerable<AbsolutePath> Packages => OutputDirectory.GlobFiles("*.nupkg");
