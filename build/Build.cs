@@ -9,7 +9,6 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
-using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
@@ -17,7 +16,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 [GitHubActions("Net-Core-Automation-CI", GitHubActionsImage.UbuntuLatest, OnPushBranches = new[] {"'**'"},
-    InvokedTargets = new[] {nameof(PublishPackages)})]
+    InvokedTargets = new[] {nameof(Pack)})]
 class Build : NukeBuild
 {
     /// Support plugins are available for:
@@ -101,7 +100,7 @@ class Build : NukeBuild
     [Parameter] static string PackageApiSettings => File.ReadAllText(Settings / "appsettings.json");
     
     Target PublishPackages => _ => _
-        .When(Configuration.Equals(Configuration.Release), pp => pp
+        .When(Configuration.Equals(Configuration.Debug), pp => pp
             .DependsOn(Pack)
             .Executes(() =>
             {
