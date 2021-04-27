@@ -1,13 +1,13 @@
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Execution;
-using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
-using Nuke.Common.Tools.Coverlet;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
@@ -30,19 +30,23 @@ class Build : NukeBuild
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
     [Solution] readonly Solution Solution;
-    [GitRepository] readonly GitRepository GitRepository;
     [PathExecutable] readonly Tool sh;
 
-    AbsolutePath SourceDirectory => RootDirectory / "src";
-    AbsolutePath ResultsDirectory => SourceDirectory / "TestResults";
-    AbsolutePath AllureCliDirectory => RootDirectory / "resources" / "allure-commandline" / "bin";
-    AbsolutePath OutputDirectory => SourceDirectory / "Output";
+    private static AbsolutePath SourceDirectory => RootDirectory / "src";
+
+    private static AbsolutePath ResultsDirectory => SourceDirectory / "TestResults";
+
+    private static AbsolutePath AllureCliDirectory => RootDirectory / "resources" / "allure-commandline" / "bin";
+
+    private static AbsolutePath OutputDirectory => SourceDirectory / "Output";
+
+    private static AbsolutePath Settings => RootDirectory / "build";
 
     Target Clean => _ => _
         .Before(Restore)
         .Executes(() =>
         {
-            SourceDirectory.GlobDirectories("**/bin", "**/obj", "**/TestResults").ForEach(DeleteDirectory);
+            SourceDirectory.GlobDirectories("**/bin", "**/obj", "**/TestResults", OutputDirectory).ForEach(DeleteDirectory);
         });
 
     Target Restore => _ => _
@@ -72,7 +76,7 @@ class Build : NukeBuild
                 .SetResultsDirectory(ResultsDirectory)
                 .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
-                    .SetLogger($"trx;LogFileName={Solution.Name}.trx"));
+                .SetLogger($"trx;LogFileName={Solution.Name}.trx"));
         });
 
     Target PublishTestResults => _ => _
@@ -90,4 +94,22 @@ class Build : NukeBuild
                 .SetProject(Solution.GetProject("NetCoreAutomationUiCommon"))
                 .SetOutputDirectory(OutputDirectory));
         });
+
+    IEnumerable<AbsolutePath> Packages => OutputDirectory.GlobFiles("*.nupkg");
+
+    [Parameter] static string PackageApiSettings => File.ReadAllText(Settings / "appsettings.json");
+    
+    Target PublishPackages => _ => _
+        .When(Configuration.Equals(Configuration.Debug), pp => pp
+            .DependsOn(Pack)
+            .Executes(() =>
+            {
+                var myGet = JsonConvert.DeserializeObject<Dictionary<string, string>>(PackageApiSettings);
+                DotNetNuGetPush(_ => _
+                    .SetSource(myGet["my-get-uri"])
+                    .SetApiKey(myGet["my-get-key"])
+                    .CombineWith(Packages, (_, v) => _
+                        .SetTargetPath(v)));
+            }));
+
 }
